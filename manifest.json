@@ -1,0 +1,15 @@
+{
+  "name": "POS UMKM - Sistem Kasir & Manajemen Toko",
+  "short_name": "POS UMKM",
+  "description": "Aplikasi POS profesional untuk minimarket & UMKM",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F6F5F1",
+  "theme_color": "#123B36",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
