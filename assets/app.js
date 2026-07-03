@@ -403,6 +403,10 @@ function renderPOS() {
             <div class="cart-row-main">
               <div class="cart-row-name">${escapeHtml(it.name)}</div>
               <div class="cart-row-sub muted">${fmtMoney(it.price)} / ${unitLabel(it.unitId)}</div>
+              <div class="cart-row-disc">
+                <span class="muted small">Diskon</span>
+                <input type="number" min="0" class="input-inline mono cart-disc-input" data-idx="${idx}" value="${it.discount || 0}" />
+              </div>
             </div>
             <div class="cart-row-qty">
               <button class="qty-btn" data-act="dec" data-idx="${idx}">−</button>
@@ -469,6 +473,13 @@ function after_pos() {
   });
   document.querySelectorAll('[data-act="rm"]').forEach((btn) => {
     btn.addEventListener("click", () => { state.posCart.splice(+btn.dataset.idx, 1); softRenderPOS(); });
+  });
+  document.querySelectorAll(".cart-disc-input").forEach((inp) => {
+    inp.addEventListener("input", (e) => {
+      const idx = +inp.dataset.idx;
+      state.posCart[idx].discount = +e.target.value || 0;
+      softRenderPOS(true);
+    });
   });
   const custSel = document.getElementById("pos-customer");
   if (custSel) custSel.addEventListener("change", (e) => { state.posCustomerId = e.target.value; });
